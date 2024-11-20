@@ -13,7 +13,7 @@
 
 ## Как это выглядит
 
-![видео](..%2F..%2F..%2FAppData%2FLocal%2FPackages%2FMicrosoft.ScreenSketch_8wekyb3d8bbwe%2FTempState%2FRecordings%2F20241120-0707-28.7252471.mp4)
+https://github.com/user-attachments/assets/f6b679a4-e146-48ad-8a8a-4350c1b8156a
 
 ## Функциональность
 

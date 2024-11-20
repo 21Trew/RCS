@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+# Визуализация данных
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Система состоит из трех компонент (`front`, `back` и `db`) и устанавливается на три инстанса (`dev`, `test` и `prod`). На каждом инстансе запускаются тесты и собирается статистика на каждом инстансе, по каждой компоненте.
 
-## Available Scripts
+## Цель проекта
 
-In the project directory, you can run:
+Требуется визуализировать сводные данные по результатам тестирования по [**макету**](https://www.figma.com/file/VloHlbLMb1qCId7tgb9GVh/%D1%82%D0%B5%D1%81%D1%82?node-id=8%3A194).
+Нельзя использовать библиотеки для построения графиков
 
-### `npm start`
+## Технологии
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`HTML` `CSS` `SVG` `TypeScript` `React`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Как это выглядит
 
-### `npm test`
+![видео](..%2F..%2F..%2FAppData%2FLocal%2FPackages%2FMicrosoft.ScreenSketch_8wekyb3d8bbwe%2FTempState%2FRecordings%2F20241120-0707-28.7252471.mp4)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Функциональность
 
-### `npm run build`
+* Веб-приложение скачивает файл с сервера, содержащий данные в формате `JSON`.
+* Данные предоставляются в виде `JSON`. По каждому из трех инстансов (`dev`, `test`, `prod`) и по каждой компоненте (`front`, `back`, `db`) есть значение, и дополнительно, норматив.
+* Веб-приложение визуализирует сводные данные, отображая на графике количество пройденных тестов по каждому компоненту системы на трех инстансах.
+* Высота столбика должна быть пропорциональна данным, которые этот столбик отображает.
+* Четвертый столбик показывает специально заданное значение `Норматив`.
+* От инстанса `dev` к инстансу `test`, и от инстанса `test` к инстансу `prod` идут стрелочки. На стрелочке записано отклонение, которое показывает разницу между суммарными значениями.
+* Вся отрисовка выполняется с помощью `SVG`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Формат данных:
+```json
+{
+"title": "OS Doors",  // Заголовок
+"dev": {              // “dev” Данные по инстансу
+"front": 66,          // - - “ ” “dev” Кол во тестов по Клиентской части на
+"back": 100,          // - “ ” “dev” по Серверной части на
+"db": 31              // - “ ” “dev” по Базе данных на
+},
+"test": {             // “test” Данные по инстансу
+"front": 60,          // - “ ” “test” по Клиентской части на
+"back": 80,           // - “ ” “test” по Серверной части на
+"db": 31              // - “ ” “test” по Базе данных на
+},
+"prod": {             // “prod” Данные по инстансу
+"front": 66,          // - “ ” “prod” по Клиентской части на
+"back": 83,           // - “ ” “prod” по Серверной части на
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+"db": 31              // - “ ” “prod” по Базе данных на
+},
+"norm": 150           // Норматив
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Установка и запуск
 
-### `npm run eject`
+### 1. Клонирование репозитория
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone <URL_репозитория>
+cd rcs
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Установка зависимостей
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 3. Запуск приложения
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Запуск приложения в браузере
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Перейдите по адресу http://localhost:3000/
